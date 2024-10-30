@@ -1,16 +1,17 @@
-from game_stack import GameStack
+
 from card import Card
 from Player import Player
 from deck import Deck
 from Gamefield import Gamefield
 import random
+from game_stack import GameStack
 
 def uploading_file_card(filename : str) -> Deck:
     listC = []
-    with open(filename , 'r') as file:
-        next(file)
-        for i in file():
-            if i.startswith("#"):
+    with open(filename , 'r' , encoding= 'utf-8') as file:
+        #next(file)
+        for i in file:
+            if i.startswith("#") or not i.strip():
                 continue
             name, cost, card_type, card_subtype, power, health = [x.strip("'") for x in i.strip().split(';')]
             card = Card()
@@ -30,7 +31,7 @@ def uploading_file_card(filename : str) -> Deck:
    
 def start_the_game():
     name = input('Введите имя:' )
-    card_deck = uploading_file_card('my_cards.txt')   
+    card_deck = uploading_file_card('my_cards.txt')  
     playerr = Player(name,card_deck)
     print (f'{name} получил {len(playerr.deck.card_list)}')
     
@@ -48,6 +49,7 @@ def start_the_game():
         a = playerr.deck.card_list.pop()
         gamee_stackk.return_card_hands(playerr,a)
         
+start_the_game()
     
     
     
