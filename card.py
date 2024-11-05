@@ -53,8 +53,9 @@ class Card:
         self.cost = '3W'
         self.card_type = ''
         self.card_subtype = ''
-        self.power = 1
-        self.health = 1
+        self.isTaped = False
+        self.isPermanent = True
+        
     
 
     def __str__(self) -> str:
@@ -63,6 +64,26 @@ class Card:
     @converted_mana_cost
     def mana_cost(self) -> int:
           return self.cost
+      
+    def tap(self):
+        self.isTaped = not self.isTaped
+        
 
 card = Card()
 print(card.mana_cost())
+
+
+class CreatureCard(Card):
+    def __init__(self):
+        super().__init__
+        power = 1
+        health = 1
+        
+class InstantCard(Card):
+    pass
+class SorceryCard(Card):
+    pass
+class ArtifactCard(Card):
+    pass
+class EnchantmentCard(Card):
+    pass
