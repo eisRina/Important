@@ -29,6 +29,8 @@ class Gamefield:
             return None
             
         
-        
+    def end_turn(self,player):
+        player.mana_pool.clear()
+        print (f'{player} завершил ход и мана = 0')
         
     
